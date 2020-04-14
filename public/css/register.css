@@ -1,0 +1,114 @@
+body{
+    background-color: rgba(207,122,205,0.3);
+    padding-top: 3%;
+}
+textarea.form-control{
+    padding: 8px;
+    overflow: hidden;
+    
+    resize: none;
+}
+/* register div*/
+
+.divmid ,.divmid-login{
+    overflow: hidden;
+    
+    margin:-400px  auto;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    box-shadow:3px 3px 3px 3px #B50DB1;
+    padding: 20px;
+    position: relative;
+    background: rgba(244,249,252,0.6);
+}
+/* back button */
+.bt-back ,.bt-back-regist,.bt-back-doctor{
+    position: absolute;
+    top: 4%;
+    right: 8%;
+    cursor: pointer;
+    color: #B50DB1;
+}
+.bt-back{
+    top: 8%;
+}
+/*************/
+.divmid h2{
+    text-align: center;
+    color: #B50DB1;
+    
+}
+.btn{
+    width: 50%;
+    margin-left: -70%;
+    margin-top: 20px;  
+    border-radius: 25px;
+}
+.hide{
+    display: none;
+}
+
+/* logo login */
+.login-logo{
+    padding-top: 5%;
+    text-align: center;
+    color: #B50DB1;
+    font-family: cursive;
+}
+.login-logo img{
+    width: 75px;
+}
+/* animate email char*/
+.email-div ,.password-div
+,.fname-div,.lname-div,.email-div1,.password-div1,.password-div1-confirm,.phone-div
+{
+    position: relative;
+    padding-top: 32px;
+    
+}
+.email-input ,.password-input 
+,.fname-input,.lname-input,.email-input1,.password-input1,.password-input1-confirm,.phone-input
+,.select-input,.date-input
+{
+    border: none;
+    border-radius: 0px;
+    border-bottom: 2px solid #007BFF;
+    background: none;
+}
+
+.form-control:focus {
+    color: #495057;
+    background-color: transparent;
+    border-color: transparent;
+    outline: 0;
+    box-shadow: 0 0 0 0 transparent;
+    border-bottom: 2px solid #007BFF;
+}
+.email-char ,.password-char
+,.fname-char,.lname-char ,.email-char1,.password-char1,.password-char1-confirm ,.phone-char
+,.password-char1,.password-char1-confirm{
+    position: absolute;
+    top: 39px;
+    left: 16px;
+    color: #7A8489;
+}
+
+/* password icon show hide*/
+.show-password,.hide-password
+,.show-password1,.hide-password1,.show-password2,.hide-password2{
+    color: #007BFF;
+    position: absolute;
+    top: 40px;
+    right: 10px;
+}
+
+.bt-sign-up{
+    
+    display: inline;
+    cursor: pointer;
+}
+.bt-sign-up:hover{
+    background: none;
+    text-decoration: underline;
+    color: #007BFF;
+}

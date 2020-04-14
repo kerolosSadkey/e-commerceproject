@@ -1,0 +1,40 @@
+/*  information  */
+.information-cart{
+    background: #EBEBEB;
+    padding: 30px;
+}
+.information-cart div{
+    position: relative;
+}
+.information-cart h1{
+    padding: 20px;
+    color: #909090;
+    padding: 20px;
+}
+.information-cart img{
+    position: absolute;
+    right: 0px;
+    bottom: -70px;
+}
+
+/*   table cart  */
+.table{
+    margin-top: 30px;
+}
+.table img{
+    width: 140px;
+    height: 160px;
+}
+.product-name{
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    height: 160px;
+}
+
+/*****      modifiy product page   */
+.btn-modify{
+    width: 70px;
+    text-align: center;
+    margin: 5px;
+}
