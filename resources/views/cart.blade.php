@@ -70,6 +70,12 @@
                 </tr>
             </tbody>
         </table>
+        <div style="text-align: end;">
+            <a href="histroy.html">
+                <button class="btn btn-secondary">show Histroy buys</button>
+            </a>
+
+        </div>
     </div>
 
 
