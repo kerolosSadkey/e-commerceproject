@@ -12,6 +12,18 @@
 
     <div class="container">
     <!--    sign in /**/ login -->
+            @if($errors->count() > 0)
+            <div class="alert alert-danger col-lg-5 mx-auto" role="alert">
+                @foreach ($errors->all() as $error )
+                <ul>
+                    <li>{{ $error }}</li>
+                </ul>
+
+                @endforeach
+
+
+            </div>
+            @endif
             <div class="divmid-login col-lg-9 col-md-8 col-sm-10 ">
                 <div class="login-logo">
 
@@ -19,36 +31,42 @@
                 </div>
 
 
-                <form>
-                    <div class="form-group">
-                       <label for="exampleInputEmail1">ID product</label>
-                       <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                     </div>
+                <form method="POST" action="{{ route('addproducts') }}" enctype="multipart/form-data">
+                    {{ csrf_field() }}
+
                     <div class="form-group">
                        <label for="exampleInputPassword1"> Name product</label>
-                       <input type="password" class="form-control" id="exampleInputPassword1">
+                       <input type="text" class="form-control" id="exampleInputPassword1" name="nameproduct">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1"> Catogry Of product</label>
-                         <select class="form-control">
+                         <select class="form-control" name="catproduct">
+                                  @if(@isset($allcat))
 
-                            <option></option>
-                            <option></option>
+                                      @foreach ($allcat as $cat )
+                                            <option>{{ $cat->namecategory }}</option>
+                                      @endforeach
+
+
+                                  @endif
                          </select>
                      </div>
                      <div class="form-group">
+                        <label for="exampleInputPassword1"> Description of product</label>
+                        <input type="text" class="form-control" id="exampleInputPassword1" name="description">
+                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1"> Quentity product</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1">
+                        <input type="text" class="form-control" id="exampleInputPassword1" name="quentityproduct">
                      </div>
                      <div class="form-group">
                         <label for="exampleInputPassword1"> price product</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1">
+                        <input type="text" class="form-control" id="exampleInputPassword1" name="priceproduct">
                      </div>
 
                     <div class="form-group">
                        <label for="exampleFormControlFile1">Image</label>
-                       <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                       <input type="file" class="form-control-file" id="exampleFormControlFile1" name="imgproduct">
                      </div>
 
                      <button type="submit" class="btn btn-primary">Submit</button>

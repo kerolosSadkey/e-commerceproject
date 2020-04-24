@@ -13,10 +13,13 @@
 <body>
     <!--  navebar  -->
        @include('navbar')
+
+
     <!--information section-->
     <div class="information-cart">
         <div class="container">
             <h1>Histroy Buys</h1>
+              <h2>you bought all from product</h2>
             <img src="image/page-info-art.png">
         </div>
 
@@ -28,50 +31,51 @@
         <table class="table">
             <thead class="thead-light">
                 <tr>
-                    <th scope="colspan=">Product</th>
+                    <th scope="colspan=">cartduct</th>
+                    <th scope="colspan=">Description</th>
                     <th scope="col">Price</th>
                     <th scope="col">Quantity</th>
-                    <th scope="col">Total</th>
+                    <th scope="col">total price</th>
                 </tr>
             </thead>
             <tbody>
+
+
+                @if(!isset($allcart))
+                <td>
+                    <h1>not found any cartduct</h1>
+                </td>
+
+                  @endif
+                 @if(isset($allcart))
+                     @foreach ( $allcart as $cart )
+
+
                 <tr>
                     <td>
-                        <img src="image/cat9.jpg" class="float-left">
-                        <div class="product-name float-left">
-                            <h2>Black Shoulder Bag</h2>
+                        <img src="{{ asset('publicimage/'. $cart->imageproduct) }}" class="float-left">
+                        <div class="cartduct-name float-left">
+                            <h2>{{ $cart->nameproduct }}</h2>
                         </div>
                     </td>
                     <td>
-                        <div class="product-name">53.00$</div>
+                        <div class="cartduct-name">{{ $cart->description }}</div>
                     </td>
                     <td>
-                        <div class="product-name">3</div>
+                        <div class="cartduct-name">{{ $cart->priceproduct }}</div>
                     </td>
                     <td>
-                        <div class="product-name">159.00$</div>
+                        <div class="cartduct-name">{{ $cart->newquy }}</div>
+                    </td>
+                    <td>
+                        <div class="cartduct-name">{{ $cart->total }}</div>
                     </td>
                 </tr>
-                <tr>
-                    <td>
-                        <img src="image/cat5.jpg" class="float-left">
-                        <div class="product-name float-left">
-                            <h2>Black Shoulder Bag</h2>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="product-name">25.00$</div>
-                    </td>
-                    <td>
-                        <div class="product-name">1</div>
-                    </td>
-                    <td>
-                        <div class="product-name">25.00$</div>
-                    </td>
-                </tr>
+                       @endforeach
+                  @endif
+
             </tbody>
         </table>
-
     </div>
 
 

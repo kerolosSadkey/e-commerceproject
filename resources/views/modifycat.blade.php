@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cart</title>
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/home.css">
-    <link rel="stylesheet" href="css/cart.css">
-    <link rel="shortcut icon" href="image/e.png">
+    <link rel="stylesheet" href="{{ asset("css/bootstrap.css") }}">
+    <link rel="stylesheet" href="{{ asset("css/style.css") }}">
+    <link rel="stylesheet" href="{{ asset("css/home.css") }}">
+    <link rel="stylesheet" href="{{ asset("css/cart.css") }}">
+    <link rel="shortcut icon" href="{{ asset("image/e.png") }}">
 </head>
 <body>
     <!--  navebar  -->
@@ -27,70 +28,48 @@
         <table class="table">
             <thead class="thead-light">
                 <tr>
-                    <th scope="colspan=">image</th>
-                    <th scope="col">Category</th>
-                    <th scope="col">Quantity</th>
-                    <th scope="col">Modify</th>
+                    <th scope="col">name category</th>
+                    <th scope="col">Description</th>
+
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>
-                        <img src="image/cat1.jpg" class="">
-                    </td>
-                    <td>
-                        <div class="product-name">
-                            <h2>Man</h2>
+
+                @if(@isset($allcat))
+
+                    @foreach ($allcat as $cat  )
+                    <tr>
+                        <td>
+                            <div class="cat-name">
+                                <h2>{{ $cat->namecategory }}</h2>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="cat-name">{{  $cat->descriptioncat}}</div>
+                        </td>
+                        <td>
+
+                            <div class="product-name" style="vertical-align: middle">
+
+
+                                <a href="{{ route('editcat',$cat->idcategory ) }}" class="editclick"><button type="button" class="btn btn-primary btn-modify edit">Edit</button><a>
+
+                            <form action="{{ route('deletecetogry') }}" method="POST" enctype="multipart/form-data" class="fromadd">
+                                {{ csrf_field() }}
+                                <input type="hidden" name="idcat" value="{{ $cat->idcategory }}">
+                                <button type="submit" class="btn btn-success btn-modify">Delete</button>
+                            </form>
+
+
                         </div>
-                    </td>
-                    <td>
-                        <div class="product-name">13</div>
-                    </td>
-                    <td>
-                        <div class="product-name" style="vertical-align: middle">
-                            <button type="button" class="btn btn-primary btn-modify">Edit</button>
-                            <button type="button" class="btn btn-success btn-modify">Delete</button>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <img src="image/cat2.jpg" class="">
-                    </td>
-                    <td>
-                        <div class="product-name">
-                            <h2>Woman</h2>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="product-name">23</div>
-                    </td>
-                    <td>
-                        <div class="product-name" style="vertical-align: middle">
-                            <button type="button" class="btn btn-primary btn-modify">Edit</button>
-                            <button type="button" class="btn btn-success btn-modify">Delete</button>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <img src="image/cat3.png" class="">
-                    </td>
-                    <td>
-                        <div class="product-name">
-                            <h2>Kids</h2>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="product-name">48</div>
-                    </td>
-                    <td>
-                        <div class="product-name" style="vertical-align: middle">
-                            <button type="button" class="btn btn-primary btn-modify">Edit</button>
-                            <button type="button" class="btn btn-success btn-modify">Delete</button>
-                        </div>
-                    </td>
-                </tr>
+                        </td>
+                    </tr>
+
+
+                    @endforeach
+
+
+                  @endif
 
 
             </tbody>
@@ -99,13 +78,35 @@
 
 
     <!--    footer   -->
+    @if(isset($onecat))
+    @foreach ($onecat as  $one)
 
+
+<div class="details-pro" style=" height:400px;">
+ <form method="POST" action="{{ route('editcatrgory') }}" enctype="multipart/form-data">
+     {{ csrf_field() }}
+ <div class="form-group">
+     <label for="exampleInputPassword1"> Name cat</label>
+     <input type="text" class="form-control" id="exampleInputPassword1" name="namecat" value="{{ $one->namecategory }}">
+  </div>
+   <div class="form-group">
+      <label for="exampleInputPassword1"> Description of cat</label>
+      <input type="text" class="form-control descrip" id="exampleInputPassword1" name="description" value="{{ $one->descriptioncat }}">
+   </div>
+   <input type="hidden" class="form-control" id="exampleInputPassword1" name="idcat" value="{{ $one->idcategory }}">
+   <button type="submit" class="btn btn-primary  btn-modify sub">Edit</button>
+<span aria-hidden="true" id="cancle">&times;</span>
+
+</form>
+</div>
+@endforeach
+@endif
     @extends('footer')
 
 
 
-    <script src="js/jquery-3.4.1.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/home.js"></script>
+    <script src="{{ asset("js/jquery-3.4.1.js") }}"></script>
+        <script src="{{ asset("js/bootstrap.min.js") }}"></script>
+        <script src="{{ asset("js/home.js") }}"></script>
 </body>
 </html>

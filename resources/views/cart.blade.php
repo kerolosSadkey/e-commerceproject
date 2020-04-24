@@ -23,51 +23,47 @@
 
     <!--        page information    -->
 
+
     <div class="container">
         <table class="table">
             <thead class="thead-light">
                 <tr>
                     <th scope="colspan=">Product</th>
+                    <th scope="colspan=">name Product</th>
                     <th scope="col">Price</th>
                     <th scope="col">Quantity</th>
                     <th scope="col">Total</th>
                 </tr>
             </thead>
             <tbody>
+
+
+                @if(session()->has('cart'))
+                @foreach (session()->get('cart') as $carts )
+
+                        @foreach ($carts as $cart )
+
+
                 <tr>
                     <td>
-                        <img src="image/cat9.jpg" class="float-left">
+                        <img src="{{ asset('publicimage/'. $cart->imageproduct ) }}" class="float-left">
                         <div class="product-name float-left">
                             <h2>Black Shoulder Bag</h2>
                         </div>
                     </td>
                     <td>
-                        <div class="product-name">53.00$</div>
+                        <div class="product-name">{{ $cart->nameproduct }}</div>
                     </td>
                     <td>
-                        <div class="product-name">3</div>
+                        <div class="product-name">{{  $cart->priceproduct}}</div>
                     </td>
                     <td>
-                        <div class="product-name">159.00$</div>
+                        <div class="product-name">{{ $cart->quentityproduct }}</div>
                     </td>
                 </tr>
-                <tr>
-                    <td>
-                        <img src="image/cat5.jpg" class="float-left">
-                        <div class="product-name float-left">
-                            <h2>Black Shoulder Bag</h2>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="product-name">25.00$</div>
-                    </td>
-                    <td>
-                        <div class="product-name">1</div>
-                    </td>
-                    <td>
-                        <div class="product-name">25.00$</div>
-                    </td>
-                </tr>
+                   @endforeach
+                @endforeach
+           @endif
             </tbody>
         </table>
         <div style="text-align: end;">

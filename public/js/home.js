@@ -9,3 +9,15 @@ $('.carousel_text').ready(function(){
 })
 
 
+$('.editclick').click(function () {
+      ('.details-pro').slideDown();
+
+});
+
+$('#cancle').click(function(){
+    $('.details-pro').slideUp();
+});
+
+$('.edit').click(function(){
+    $('.details-pro').slideDown();
+});

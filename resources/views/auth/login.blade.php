@@ -12,6 +12,18 @@
 
     <div class="container">
     <!--    sign in /**/ login -->
+                        @if($errors->count() > 0)
+                        <div class="alert alert-danger col-lg-5 mx-auto" role="alert">
+                            @foreach ($errors->all() as $error )
+                            <ul>
+                                <li>{{ $error }}</li>
+                            </ul>
+
+                            @endforeach
+
+
+                        </div>
+                        @endif
             <div class="divmid-login col-lg-5 col-md-8 col-sm-10">
                 <div class="login-logo">
                     <img src="image/e.png">
@@ -19,15 +31,16 @@
                 </div>
 
                 <div class="bt-back">Back</div>
-                <form class="px-4 py-3" action="" method="post">
+                <form class="px-4 py-3" action="{{ route('login') }}" method="post" enctype="multipart/form-data">
+                    {{ csrf_field()}}
                     <!--email-->
                     <div class="form-group email-div">
-                        <input type="email" class="form-control email-input" id="exampleDropdownFormEmail1">
+                        <input type="email" class="form-control email-input" id="exampleDropdownFormEmail1" name="email">
                         <span class="email-char">Email</span>
                     </div>
                     <!-- password -->
                     <div class="form-group password-div">
-                        <input type="password" class="form-control password-input" id="exampleDropdownFormPassword1">
+                        <input type="password" class="form-control password-input" id="exampleDropdownFormPassword1" name="password">
                         <span class="password-char">Password</span>
                         <span class="show-password hide"><i class="fa fa-eye" aria-hidden="true"></i></span>
                         <span class="hide-password"><i class="fa fa-eye-slash" aria-hidden="true"></i></span>
@@ -36,7 +49,7 @@
                 </form>
                 <div class="dropdown-divider"></div>
                 Don’t have an account?
-                <a href="regist.html" class="bt-sign-up">Sign up</a>
+                <a href="{{ route("register") }}" class="bt-sign-up">Sign up</a>
             </div>
 
     </div>

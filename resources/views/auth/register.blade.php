@@ -14,6 +14,20 @@
 <body>
 
     <div class="container">
+
+              @if($errors->count() > 0)
+              <div class="alert alert-danger col-lg-5 mx-auto" role="alert">
+                    @foreach ($errors->all() as $error )
+                    <ul>
+                        <li>{{ $error }}</li>
+                    </ul>
+
+                    @endforeach
+
+
+                </div>
+              @endif
+
             <div class="divmid col-lg-5 col-md-8 col-sm-10">
                 <div class="login-logo">
                     <img src="image/e.png">
@@ -21,34 +35,35 @@
                 </div>
                 <div class="bt-back-regist">Back</div>
 
-                <form class="px-4 py-3" action="" method="post">
+                <form class="px-4 py-3" action="{{ route("addusers") }}" method="post" enctype="multipart/form-data">
                     <!--First,Last Name-->
+                   {{ csrf_field() }}
                     <div class="form-row">
                         <div class="form-group col fname-div">
-                            <input type="text" class="form-control fname-input" id="exampleDropdownFormEmail1">
+                            <input type="text" class="form-control fname-input" id="exampleDropdownFormEmail1" name="fname">
                             <span class="fname-char">First Name</span>
                         </div>
                         <div class="form-group col lname-div">
-                            <input type="text" class="form-control lname-input" id="exampleDropdownFormEmail1">
+                            <input type="text" class="form-control lname-input" id="exampleDropdownFormEmail1" name="lname">
                             <span class="lname-char">Last Name</span>
                         </div>
                     </div>
                     <!--email-->
                     <div class="form-group email-div1">
-                        <input type="email" class="form-control email-input1" id="exampleDropdownFormEmail1">
+                        <input type="email" class="form-control email-input1" id="exampleDropdownFormEmail1" name="email">
                         <span class="email-char1">Email Address</span>
                     </div>
 
                     <!--pass-->
                     <div class="form-group password-div1">
-                        <input type="password" class="form-control password-input1" id="exampleDropdownFormPassword1">
+                        <input type="password" class="form-control password-input1" id="exampleDropdownFormPassword1" name="password">
                         <span class="password-char1">Password</span>
                         <span class="show-password1 hide"><i class="fa fa-eye" aria-hidden="true"></i></span>
                         <span class="hide-password1"><i class="fa fa-eye-slash" aria-hidden="true"></i></span>
                     </div>
                     <!--c pass-->
                     <div class="form-group password-div1-confirm">
-                        <input type="password" class="form-control password-input1-confirm" id="exampleDropdownFormPassword1">
+                        <input type="password" class="form-control password-input1-confirm" id="exampleDropdownFormPassword1" name="confirmpassword">
                         <span class="password-char1-confirm">Confirm Password</span>
                         <span class="show-password2 hide"><i class="fa fa-eye" aria-hidden="true"></i></span>
                         <span class="hide-password2"><i class="fa fa-eye-slash" aria-hidden="true"></i></span>
@@ -56,18 +71,26 @@
                     <!--Gender-->
                     <div class="form-group" >
 
-                        <select class="form-control select-input">
+                        <select class="form-control select-input" name="gender">
                             <option value="0" disabled selected>Gender</option>
                             <option value="male">Male</option>
                             <option value="female">Female</option>
                         </select>
                     </div>
                     <!--Date-->
-                    <div class="form-group">
-                        <input class="form-control date-input" type="date" name="bday">
-                    </div>
 
                     <div class="form-group">
+                        <div class="form-group" >
+
+                            <select class="form-control select-input" name="role">
+                                <option value="0" disabled selected>Role</option>
+                                <option value="Admin">Admin</option>
+                                <option value="user">user</option>
+                            </select>
+                        </div>
+                        <!--Date-->
+
+                        <div class="form-group">
                         <button type="submit" class="btn btn-primary">Sign Up</button>
                     </div>
 
